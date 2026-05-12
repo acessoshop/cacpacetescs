@@ -107,8 +107,17 @@ function CheckoutPage() {
   }
 
   function saveAddress() {
-    if (!addr.name.trim() || !addr.phone.trim()) {
-      toast.error("Preencha pelo menos nome e telefone");
+    const missing: string[] = [];
+    if (!addr.name.trim()) missing.push("nome");
+    if (!addr.phone.trim()) missing.push("telefone");
+    if (!addr.cep.trim()) missing.push("CEP");
+    if (!addr.address.trim()) missing.push("rua");
+    if (!addr.number.trim()) missing.push("número");
+    if (!addr.neighborhood.trim()) missing.push("bairro");
+    if (!addr.city.trim()) missing.push("cidade");
+    if (!addr.state.trim()) missing.push("estado");
+    if (missing.length) {
+      toast.error(`Preencha: ${missing.join(", ")}`);
       return;
     }
     localStorage.setItem("cs-addr", JSON.stringify(addr));
@@ -130,6 +139,21 @@ function CheckoutPage() {
   async function placeOrder() {
     if (items.length === 0) {
       toast.error("Carrinho vazio");
+      return;
+    }
+    if (
+      !savedAddr ||
+      !savedAddr.name.trim() ||
+      !savedAddr.phone.trim() ||
+      !savedAddr.cep.trim() ||
+      !savedAddr.address.trim() ||
+      !savedAddr.number.trim() ||
+      !savedAddr.neighborhood.trim() ||
+      !savedAddr.city.trim() ||
+      !savedAddr.state.trim()
+    ) {
+      toast.error("Preencha o endereço de entrega para gerar o PIX");
+      openAddr();
       return;
     }
     setLoading(true);
