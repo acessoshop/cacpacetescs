@@ -14,7 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          customer_address: string | null
+          customer_cep: string | null
+          customer_city: string | null
+          customer_complement: string | null
+          customer_cpf: string
+          customer_email: string
+          customer_name: string
+          customer_neighborhood: string | null
+          customer_number: string | null
+          customer_phone: string
+          customer_state: string | null
+          expires_at: string | null
+          id: string
+          items_json: Json
+          paid_at: string | null
+          pix_copy_paste: string | null
+          qr_code_b64: string | null
+          status: string
+          transaction_id: string
+          updated_at: string
+        }
+        Insert: {
+          amount_cents: number
+          created_at?: string
+          customer_address?: string | null
+          customer_cep?: string | null
+          customer_city?: string | null
+          customer_complement?: string | null
+          customer_cpf: string
+          customer_email: string
+          customer_name: string
+          customer_neighborhood?: string | null
+          customer_number?: string | null
+          customer_phone: string
+          customer_state?: string | null
+          expires_at?: string | null
+          id?: string
+          items_json?: Json
+          paid_at?: string | null
+          pix_copy_paste?: string | null
+          qr_code_b64?: string | null
+          status?: string
+          transaction_id: string
+          updated_at?: string
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          customer_address?: string | null
+          customer_cep?: string | null
+          customer_city?: string | null
+          customer_complement?: string | null
+          customer_cpf?: string
+          customer_email?: string
+          customer_name?: string
+          customer_neighborhood?: string | null
+          customer_number?: string | null
+          customer_phone?: string
+          customer_state?: string | null
+          expires_at?: string | null
+          id?: string
+          items_json?: Json
+          paid_at?: string | null
+          pix_copy_paste?: string | null
+          qr_code_b64?: string | null
+          status?: string
+          transaction_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
