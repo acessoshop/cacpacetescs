@@ -71,6 +71,14 @@ function Index() {
   const goNext = () => setSelectedIdx((i) => (i + 1) % PRODUCTS.length);
   const goPrev = () => setSelectedIdx((i) => (i - 1 + PRODUCTS.length) % PRODUCTS.length);
 
+  // Pré-carrega todas as imagens de produto para troca instantânea
+  useEffect(() => {
+    PRODUCTS.forEach((p) => {
+      const img = new Image();
+      img.src = p.image;
+    });
+  }, []);
+
   function openSheet() {
     setSheetIdx(selectedIdx);
     setSheetSize(null);
