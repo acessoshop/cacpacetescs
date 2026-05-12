@@ -25,7 +25,9 @@ const reviews = [
   { name: "Rafael Mendes", time: "há 7 horas", text: "Capacete LS2 muito top! Acabamento impecável, viseira cristalina e ventilação excelente. Melhor custo-benefício que já comprei!", avatar: "/assets/cs/images/avatar-rafael.jpg", img: "/assets/cs/images/review-ls2.webp" },
 ];
 
-const SIZES = ["54", "56", "58", "60", "62"];
+const HELMET_SIZES = ["54", "56", "58", "60", "62"];
+const JACKET_SIZES = ["P", "M", "G"];
+const sizesFor = (name: string) => (/^Jaqueta/i.test(name) ? JACKET_SIZES : HELMET_SIZES);
 
 function useCountdown(initial = 24 * 60 * 60 - 3) {
   const [s, setS] = useState(initial);
@@ -68,6 +70,14 @@ function Index() {
 
   const goNext = () => setSelectedIdx((i) => (i + 1) % PRODUCTS.length);
   const goPrev = () => setSelectedIdx((i) => (i - 1 + PRODUCTS.length) % PRODUCTS.length);
+
+  // Pré-carrega todas as imagens de produto para troca instantânea
+  useEffect(() => {
+    PRODUCTS.forEach((p) => {
+      const img = new Image();
+      img.src = p.image;
+    });
+  }, []);
 
   function openSheet() {
     setSheetIdx(selectedIdx);
@@ -338,13 +348,14 @@ function Index() {
             </div>
 
             {/* Tamanhos */}
+            {(() => { const sizes = sizesFor(sheetProduct.name); return (
             <div className="mt-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold">Tamanho ({SIZES.length})</h3>
+                <h3 className="font-semibold">Tamanho ({sizes.length})</h3>
                 <button className="text-[color:var(--link)] text-sm">Guia de tamanhos</button>
               </div>
               <div className="grid grid-cols-3 gap-2 mt-2">
-                {SIZES.map((sz) => (
+                {sizes.map((sz) => (
                   <button
                     key={sz}
                     onClick={() => setSheetSize(sz)}
@@ -356,6 +367,7 @@ function Index() {
                 ))}
               </div>
             </div>
+            ); })()}
 
             {/* CTAs */}
             <div className="mt-4 space-y-2">
