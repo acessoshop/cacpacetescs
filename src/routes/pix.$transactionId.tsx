@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { getOrderStatus } from "@/server/checkout.functions";
+import { getOrderStatus } from "@/lib/checkout.functions";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Copy, CheckCircle2, Clock, ChevronLeft, ShieldCheck } from "lucide-react";
