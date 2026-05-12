@@ -9,7 +9,7 @@ const BASE_URL =
 
 // productHash configurável via env, com fallback para o produto fornecido pelo lojista.
 const DEFAULT_PRODUCT_HASH =
-  process.env.PARADISE_PRODUCT_HASH || "pix_15e433fe34dd";
+  process.env.PARADISE_PRODUCT_HASH || "prod_40e485d44e117d3a";
 
 function getApiKey(): string {
   const key = process.env.PARADISE_API_KEY;
