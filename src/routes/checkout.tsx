@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { createPixOrder } from "@/server/checkout.functions";
+import { createPixOrder } from "@/lib/checkout.functions";
 import { useCart, formatBRL } from "@/store/cart";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
