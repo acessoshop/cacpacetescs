@@ -71,12 +71,25 @@ function Index() {
   const goNext = () => setSelectedIdx((i) => (i + 1) % PRODUCTS.length);
   const goPrev = () => setSelectedIdx((i) => (i - 1 + PRODUCTS.length) % PRODUCTS.length);
 
-  // Pré-carrega todas as imagens de produto para troca instantânea
+  // Pré-carrega vizinhos imediatos para troca instantânea ao clicar nas setas
   useEffect(() => {
-    PRODUCTS.forEach((p) => {
+    const neighbors = [1, -1, 2, -2, 3, -3];
+    neighbors.forEach((offset) => {
+      const idx = (selectedIdx + offset + PRODUCTS.length) % PRODUCTS.length;
       const img = new Image();
-      img.src = p.image;
+      img.src = PRODUCTS[idx].image;
     });
+  }, [selectedIdx]);
+
+  // Pré-carrega o resto em segundo plano, sem competir com a imagem atual
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      PRODUCTS.forEach((p) => {
+        const img = new Image();
+        img.src = p.image;
+      });
+    }, 1500);
+    return () => window.clearTimeout(id);
   }, []);
 
   function openSheet() {
