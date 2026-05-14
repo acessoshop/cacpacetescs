@@ -155,6 +155,10 @@ function Index() {
         <img
           src={product.image}
           alt={product.name}
+          loading="eager"
+          decoding="async"
+          // @ts-expect-error fetchpriority é atributo HTML válido
+          fetchpriority="high"
           className="w-full h-[360px] object-contain"
         />
         <button
