@@ -14,6 +14,8 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PixTransactionIdRouteImport } from './routes/pix.$transactionId'
 import { Route as ApiPublicParadiseWebhookRouteImport } from './routes/api/public/paradise-webhook'
+import { Route as ApiPublicOrderStatusRouteImport } from './routes/api/public/order-status'
+import { Route as ApiPublicCreatePixRouteImport } from './routes/api/public/create-pix'
 
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
@@ -41,12 +43,24 @@ const ApiPublicParadiseWebhookRoute =
     path: '/api/public/paradise-webhook',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicOrderStatusRoute = ApiPublicOrderStatusRouteImport.update({
+  id: '/api/public/order-status',
+  path: '/api/public/order-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicCreatePixRoute = ApiPublicCreatePixRouteImport.update({
+  id: '/api/public/create-pix',
+  path: '/api/public/create-pix',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
   '/obrigado': typeof ObrigadoRoute
   '/pix/$transactionId': typeof PixTransactionIdRoute
+  '/api/public/create-pix': typeof ApiPublicCreatePixRoute
+  '/api/public/order-status': typeof ApiPublicOrderStatusRoute
   '/api/public/paradise-webhook': typeof ApiPublicParadiseWebhookRoute
 }
 export interface FileRoutesByTo {
@@ -54,6 +68,8 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/obrigado': typeof ObrigadoRoute
   '/pix/$transactionId': typeof PixTransactionIdRoute
+  '/api/public/create-pix': typeof ApiPublicCreatePixRoute
+  '/api/public/order-status': typeof ApiPublicOrderStatusRoute
   '/api/public/paradise-webhook': typeof ApiPublicParadiseWebhookRoute
 }
 export interface FileRoutesById {
@@ -62,6 +78,8 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/obrigado': typeof ObrigadoRoute
   '/pix/$transactionId': typeof PixTransactionIdRoute
+  '/api/public/create-pix': typeof ApiPublicCreatePixRoute
+  '/api/public/order-status': typeof ApiPublicOrderStatusRoute
   '/api/public/paradise-webhook': typeof ApiPublicParadiseWebhookRoute
 }
 export interface FileRouteTypes {
@@ -71,6 +89,8 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/obrigado'
     | '/pix/$transactionId'
+    | '/api/public/create-pix'
+    | '/api/public/order-status'
     | '/api/public/paradise-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -78,6 +98,8 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/obrigado'
     | '/pix/$transactionId'
+    | '/api/public/create-pix'
+    | '/api/public/order-status'
     | '/api/public/paradise-webhook'
   id:
     | '__root__'
@@ -85,6 +107,8 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/obrigado'
     | '/pix/$transactionId'
+    | '/api/public/create-pix'
+    | '/api/public/order-status'
     | '/api/public/paradise-webhook'
   fileRoutesById: FileRoutesById
 }
@@ -93,6 +117,8 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ObrigadoRoute: typeof ObrigadoRoute
   PixTransactionIdRoute: typeof PixTransactionIdRoute
+  ApiPublicCreatePixRoute: typeof ApiPublicCreatePixRoute
+  ApiPublicOrderStatusRoute: typeof ApiPublicOrderStatusRoute
   ApiPublicParadiseWebhookRoute: typeof ApiPublicParadiseWebhookRoute
 }
 
@@ -133,6 +159,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicParadiseWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/order-status': {
+      id: '/api/public/order-status'
+      path: '/api/public/order-status'
+      fullPath: '/api/public/order-status'
+      preLoaderRoute: typeof ApiPublicOrderStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/create-pix': {
+      id: '/api/public/create-pix'
+      path: '/api/public/create-pix'
+      fullPath: '/api/public/create-pix'
+      preLoaderRoute: typeof ApiPublicCreatePixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -141,6 +181,8 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ObrigadoRoute: ObrigadoRoute,
   PixTransactionIdRoute: PixTransactionIdRoute,
+  ApiPublicCreatePixRoute: ApiPublicCreatePixRoute,
+  ApiPublicOrderStatusRoute: ApiPublicOrderStatusRoute,
   ApiPublicParadiseWebhookRoute: ApiPublicParadiseWebhookRoute,
 }
 export const routeTree = rootRouteImport
