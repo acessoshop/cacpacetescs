@@ -3,27 +3,27 @@
 Vitrine de produtos hospedada gratuitamente no GitHub Pages.
 Os botões "Comprar agora" levam pra loja oficial (Lovable) que cuida do checkout e Pix.
 
-**URL final:** `https://acessoshop.github.io/produtos/`
+**URL final:** `https://acessoshop.github.io/cacpacetescs/`
 
 ## Como subir pra GitHub Pages (passo a passo)
 
 ### 1. Conectar o projeto ao GitHub
-No editor da Lovable: clique no botão **+** (canto inferior esquerdo do chat) → **GitHub** → **Connect project**. Autorize o app e crie o repositório com nome **`produtos`** na conta `acessoshop`.
+No editor da Lovable: clique no botão **+** (canto inferior esquerdo do chat) → **GitHub** → **Connect project**. Autorize o app e crie o repositório com nome **`cacpacetescs`** na conta `acessoshop`.
 
 ### 2. Ativar o GitHub Pages
-1. Vá em `https://github.com/acessoshop/produtos/settings/pages`
+1. Vá em `https://github.com/acessoshop/cacpacetescs/settings/pages`
 2. Em **Source**, selecione **GitHub Actions**
 3. Salve.
 
 ### 3. Aguardar o deploy
-Assim que você conectar, o workflow `.github/workflows/deploy-pages.yml` roda automaticamente. Acompanhe em `https://github.com/acessoshop/produtos/actions`. Em ~2 minutos seu site fica no ar em **`https://acessoshop.github.io/produtos/`**.
+Assim que você conectar, o workflow `.github/workflows/deploy-pages.yml` roda automaticamente. Acompanhe em `https://github.com/acessoshop/cacpacetescs/actions`. Em ~2 minutos seu site fica no ar em **`https://acessoshop.github.io/cacpacetescs/`**.
 
 ## Como editar localmente (opcional)
 
 ```bash
 cd static-site
 npm install
-npm run dev      # roda em http://localhost:5173/produtos/
+npm run dev      # roda em http://localhost:5173/cacpacetescs/
 npm run build    # gera dist/
 ```
 
@@ -36,4 +36,4 @@ npm run build    # gera dist/
 
 ## Trocar o nome do repositório
 
-Se mudar o nome de `produtos` pra outro, edite **`vite.config.ts`** alterando `base: "/produtos/"` pro novo nome (com barras nos dois lados).
+Se mudar o nome de `cacpacetescs` pra outro, edite **`vite.config.ts`** alterando `base: "/cacpacetescs/"` pro novo nome (com barras nos dois lados).
