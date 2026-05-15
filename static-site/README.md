@@ -1,6 +1,6 @@
 # Site estático (GitHub Pages)
 
-Vitrine de cacpacetescs hospedada gratuitamente no GitHub Pages.
+Vitrine de produtos hospedada gratuitamente no GitHub Pages.
 Os botões "Comprar agora" levam pra loja oficial (Lovable) que cuida do checkout e Pix.
 
 **URL final:** `https://acessoshop.github.io/cacpacetescs/`
